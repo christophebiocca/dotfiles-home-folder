@@ -1,2 +1,10 @@
 *
 !.gitignore
+!.bashrc
+!.profile
+!.xmonad
+!.xmonad/*.hs
+!bin
+!bin/password_manager
+!.saved_passwords
+!.vimrc
