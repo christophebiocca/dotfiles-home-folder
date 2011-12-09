@@ -1,0 +1,12 @@
+# README
+
+This project contains a few dotfiles for general usage and some portable executables for my use.
+For the most part it's all very standard stuff, except for the files mentioned below.
+
+## xmonad
+
+I have a configuration that actually properly makes xmonad work with unity, with the exception of the unity laucher being a too tall. The only way in which this differs from other attempts is the use of copyWindow to have the launcher appear on all workspaces.
+
+## bin/password_manager and .saved_passwords
+
+The password_manager script allows for generating secure passwords from a given master password in a repeateable way. To make use easier and to allow for verification of the master password, it stores the other information used in generating the derived passwords inside a file which is itself encrypted using the master password. Note however that the information inside the file itself is insufficient to actually generate the passwords, and you do not actually need the file to generate the password again, if you remember the parameters. I only encrypt it so that there's an easy way to check you typed your password in correctly.
