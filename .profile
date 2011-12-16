@@ -20,3 +20,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# include android-sdks folder if it exists
+if [ -d "$HOME/android-sdks/platform-tools" ] ; then
+    PATH="$HOME/android-sdks/platform-tools:$PATH"
+fi
