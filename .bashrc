@@ -103,3 +103,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 alias arduinodude='sudo /home/christophe/Code/Jake/Arduino_AVR_Programmer/avrdude-5.10/avrdude -C /home/christophe/Code/Jake/Arduino_AVR_Programmer/avrdude-5.10/avrdude.conf -c arduino -P ft0'
+
+# Set extra environment variables here.
+export EDITOR=vim
