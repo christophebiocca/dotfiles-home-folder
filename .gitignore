@@ -11,4 +11,6 @@
 !/bin/password_manager
 !/.saved_passwords
 !/.vimrc
+!/.vim
+/.vim/.netrwhist
 !/README
