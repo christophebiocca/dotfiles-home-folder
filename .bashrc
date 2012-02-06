@@ -2,8 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# Do the following in interactive mode only:
+if [[ -n "$PS1" ]] ; then
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -104,3 +104,8 @@ fi
 
 # Set extra environment variables here.
 export EDITOR=vim
+
+fi
+
+# RVM is always on the path, regardless of interactivity.
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
