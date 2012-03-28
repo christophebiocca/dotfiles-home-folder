@@ -24,5 +24,6 @@ main = xmonad $ gnomeConfig
 	{ layoutHook = myLayouts $ smartBorders $ layoutHook gnomeConfig
 	, manageHook = manageHook gnomeConfig <+> myManageHook
 	, workspaces = myWorkspaces
+        , modMask = mod5Mask
 	} 
 
