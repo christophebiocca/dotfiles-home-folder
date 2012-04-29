@@ -10,18 +10,14 @@ import XMonad.Util.EZConfig
 
 myWorkspaces = workspaces gnomeConfig
 
-doCopyToAll = ask >>= doF . \w -> (\ws -> foldr($) ws (map (copyWindow w) myWorkspaces))
-
 myManageHook = composeAll (
 	[ manageHook gnomeConfig
 	, className =? "Unity-2d-panel" --> doIgnore
-	, className =? "Unity-2d-launcher" --> (doFloat <+> doCopyToAll)
+        , className =? "Do" --> doFloat
 	])
 
-myLayouts = gaps [(U, 24)]
-
 main = xmonad $ gnomeConfig
-	{ layoutHook = myLayouts $ smartBorders $ layoutHook gnomeConfig
+	{ layoutHook = smartBorders $ layoutHook gnomeConfig
 	, manageHook = manageHook gnomeConfig <+> myManageHook
 	, workspaces = myWorkspaces
         , modMask = mod5Mask
