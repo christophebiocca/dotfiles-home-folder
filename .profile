@@ -28,3 +28,6 @@ fi
 
 # Set extra environment variables here.
 export EDITOR=vim
+
+# RVM is always on the path, regardless of interactivity.
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
