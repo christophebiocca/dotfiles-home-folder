@@ -102,9 +102,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Set extra environment variables here.
-export EDITOR=vim
-
 fi
 
 # RVM is always on the path, regardless of interactivity.

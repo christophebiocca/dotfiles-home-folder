@@ -25,3 +25,6 @@ fi
 if [ -d "$HOME/android-sdks/platform-tools" ] ; then
     PATH="$HOME/android-sdks/platform-tools:$PATH"
 fi
+
+# Set extra environment variables here.
+export EDITOR=vim
