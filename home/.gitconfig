@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 	autocrlf = input
-	excludesfile = /home/christophe/.git-user-excludes
+	excludesfile = ~/.git-user-excludes
 [github]
 	user = christophebiocca
 	token = 45601450922ae8931a1341a1c4b107ab
