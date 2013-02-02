@@ -76,4 +76,9 @@ fi
 [[ -f "$HOME/.aws_credentials" ]] && source "$HOME/.aws_credentials"
 
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
+if [[ -f "/Applications/Inkscape.app/Contents/Resources/bin/inkscape" ]]; then
+    alias inkscape="/Applications/Inkscape.app/Contents/Resources/bin/inkscape"
+fi
+
 true
