@@ -1,0 +1,23 @@
+[user]
+	name = Christophe Biocca
+	email = christophe.biocca@gmail.com
+[core]
+	editor = vim
+	autocrlf = input
+	excludesfile = /home/christophe/.git-user-excludes
+[github]
+	user = christophebiocca
+	token = 45601450922ae8931a1341a1c4b107ab
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	grep = auto
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[push]
+	default = tracking
+[branch]
+	autosetuprebase = always
