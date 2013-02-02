@@ -69,4 +69,4 @@ export NODE_PATH=/usr/lib/node_modules/
 
 [[ -f "$HOME/.aws_credentials" ]] && source "$HOME/.aws_credentials"
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+[[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
