@@ -65,7 +65,13 @@ PATH=$PATH:$HOME/bin
 export EDITOR=vim
 export VISUAL=vim
 
-export NODE_PATH=/usr/lib/node_modules/
+if [[ -d '/usr/lib/node_modules/' ]]; then
+    export NODE_PATH=/usr/lib/node_modules/
+fi
+
+if [[ -d '/usr/local/lib/node_modules/' ]]; then
+    export NODE_PATH=/usr/local/lib/node_modules/
+fi
 
 [[ -f "$HOME/.aws_credentials" ]] && source "$HOME/.aws_credentials"
 
