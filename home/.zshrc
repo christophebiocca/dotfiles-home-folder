@@ -60,7 +60,9 @@ bashcompinit
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Add user bin.
-PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/bin:$HOME/adt/sdk/platform-tools/
+
+export ANDROID_HOME=$HOME/adt/sdk/
 
 export EDITOR=vim
 export VISUAL=vim
@@ -74,6 +76,7 @@ if [[ -d '/usr/local/lib/node_modules/' ]]; then
 fi
 
 [[ -f "$HOME/.aws_credentials" ]] && source "$HOME/.aws_credentials"
+[[ -f "$HOME/.google_api_credentials" ]] && source "$HOME/.google_api_credentials"
 
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
 true
