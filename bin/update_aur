@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+require 'cgi'
+require 'fileutils'
+require 'json'
+require 'net/http'
+require 'rubygems/package'
+require 'zlib'
+
+Dir.chdir(File.join(ENV['HOME'],'pkgbuilds'))
+
+FileUtils.mkdir_p('.downloads')
+
+packages = ARGV.empty? ? Dir.glob('*') : ARGV
+
+Net::HTTP.start('aur.archlinux.org',use_ssl:true) do |connection|
+  package_search_string = packages.collect{|package_name| "arg[]=#{CGI.escape(package_name)}"}.join('&')
+  results = nil
+
+  connection.request_get("/rpc.php?type=multiinfo&#{package_search_string}") do |response|
+    parsed = JSON.parse(response.body)
+    (STDERR.puts("Got an error: #{response.body}"); exit(1)) if parsed['type'] == 'error'
+    results = parsed['results']
+    names = results.collect{|r| r['Name']}
+    (STDERR.puts("Couldn't find all packages (got #{names.join(', ')})"); exit(1)) unless names.sort() == packages.sort
+  end
+
+  results.collect! do |result|
+    [result,File.join('.downloads',File.basename(result['URLPath']))]
+  end
+  
+  new_downloads = results.reject do |package,path|
+    File.exists?(path) and File.mtime(path) > Time.at(package['LastModified'])
+  end.each do |package,path|
+    STDERR.puts("Downlading #{package['Name']}...")
+    File.open(path,'w') do |file|
+      connection.get(package['URLPath']) do |data|
+        file.write(data)
+      end
+    end
+  end
+
+  new_downloads + (results - new_downloads).reject do |package,path|
+      File.exists?(package['Name'])
+  end
+
+end.each do |package,path|
+  Zlib::GzipReader.open(path) do |gz|
+    Gem::Package::TarReader.new(gz) do |reader|
+      reader.each do |entry|
+        next unless entry.file?
+        target = entry.full_name
+        body = entry.read()
+        if File.exists?(target)
+          next if File.read(entry.full_name) == body
+          target += '.aurnew'
+        end
+
+        FileUtils.mkdir_p(File.dirname(target))
+        File.open(target,'w'){|f|f.write(body)}
+        STDERR.puts(target)
+      end
+    end
+  end
+end
