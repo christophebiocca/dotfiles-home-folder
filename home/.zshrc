@@ -57,10 +57,6 @@ bashcompinit
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
-
 # Add user bin.
 PATH=$PATH:$HOME/bin:$HOME/adt/sdk/platform-tools/
 
