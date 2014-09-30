@@ -73,6 +73,13 @@ if [[ -d '/usr/local/lib/node_modules/' ]]; then
     export NODE_PATH=/usr/local/lib/node_modules/
 fi
 
+if type npm > /dev/null 2>&1; then
+    NODE_BIN=`npm bin -g 2> /dev/null`
+    if ! echo $PATH | grep -Eq "(^|:)${NODE_BIN}($|:)" ; then
+        PATH=$PATH:$NODE_BIN
+    fi
+fi
+
 [[ -f "$HOME/.aws_credentials" ]] && source "$HOME/.aws_credentials"
 [[ -f "$HOME/.google_api_credentials" ]] && source "$HOME/.google_api_credentials"
 
