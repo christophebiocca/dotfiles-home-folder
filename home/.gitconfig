@@ -21,3 +21,5 @@
 	default = tracking
 [branch]
 	autosetuprebase = always
+[apply]
+	whitespace = fix
