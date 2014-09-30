@@ -78,11 +78,16 @@ fi
 
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
 
+if type dircolors > /dev/null 2>&1 ; then
+    # Linux
+    eval $(dircolors)
+    alias ls='ls --color=auto'
+else
+    # OSX
+    export CLICOLOR=YES
+fi
+
 alias grep='grep --color=auto'
-
-alias ls='ls --color=auto'
-
-eval $(dircolors)
 
 man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
