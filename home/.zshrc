@@ -58,7 +58,7 @@ bashcompinit
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
 # Add user bin.
-PATH=$PATH:$HOME/bin:$HOME/adt/sdk/platform-tools/
+PATH=$HOME/bin:$PATH:$HOME/adt/sdk/platform-tools/
 
 export ANDROID_HOME=$HOME/adt/sdk/
 
